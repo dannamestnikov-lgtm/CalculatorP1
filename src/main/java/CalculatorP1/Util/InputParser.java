@@ -11,7 +11,8 @@ public class InputParser {
                 "\nlast - показать последнюю операцию " +
                 "\nclear - очистить историю операций " +
                 "\nexit - выход из программы) ");
-        // гандоны
+        // гандон
+        
         return scanner.nextLine();
     }
 
