@@ -1,6 +1,7 @@
 package CalculatorP1.Util;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class InputParser {
     private final Scanner scanner = new Scanner(System.in);
@@ -11,13 +12,26 @@ public class InputParser {
                 "\nlast - показать последнюю операцию " +
                 "\nclear - очистить историю операций " +
                 "\nexit - выход из программы) ");
-        // гандон
-        
+
         return scanner.nextLine();
     }
 
     public String[] split(String input) {
-        String operator;
+        String operator = findOperators(input);
+        String[] numbers = input.split(Pattern.quote(operator));
+        validateParts(numbers);
+
+        String leftPart = numbers[0].trim();
+        String rightPart = numbers[1].trim();
+
+        if (leftPart.isEmpty() || rightPart.isEmpty()) {
+            throw new IllegalArgumentException("неверный формат");
+        }
+        return new String[]{leftPart, operator, rightPart};
+    }
+
+        public String findOperator(String input){
+            String operator;
         if (input.contains("+")) {
             operator = "+";
         } else if (input.contains("-")) {
@@ -29,20 +43,14 @@ public class InputParser {
         } else {
             throw new IllegalArgumentException("оператор не найден");
         }
-        String[] numbers = input.split("\\" + operator);
-
-        // новый метод на длину массива
-        if (numbers.length != 2) {
-            throw new IllegalArgumentException("неверный формат");
+        return operator;
         }
-        String leftPart = numbers[0].trim();
-        String rightPart = numbers[1].trim();
 
-        if (leftPart.isEmpty() || rightPart.isEmpty()) {
-            throw new IllegalArgumentException("неверный формат");
+        public void validateParts(String[] numbers) {
+            if (numbers.length != 2) {
+                throw new IllegalArgumentException("неверный формат");
+            }
         }
-        return new String[]{leftPart, operator, rightPart};
-    }
 
     public double parseNumber(String value) {
         try {
