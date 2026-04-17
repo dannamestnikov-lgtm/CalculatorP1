@@ -47,7 +47,7 @@ public class WordUtil {
         String [] words = input.trim().split(" ");
         int result = 0;
 
-        for (String word : words){
+        for (String word : words) {
             Integer value = wordToNumber.get(word);
             if (value == null){
                 throw new IllegalArgumentException("неверное слово: " + word);
@@ -66,7 +66,7 @@ public class WordUtil {
         String tensWord = numberToWord.get(tens);
         String onesWord = numberToWord.get(ones);
 
-        if (ones == 0){
+        if (ones == 0) {
             return tensWord;
         }
         return tensWord + " " + onesWord;
