@@ -6,8 +6,12 @@ public class InputParser {
     private final Scanner scanner = new Scanner(System.in);
 
     public String readInput() {
-        System.out.println("Введите выражение:  \n(или history - показать последние 10 операций \nlast - показать последнюю операцию \nclear - очистить историю операций \nexit - выход из программы) ");
-        return scanner.nextLine().trim();
+        System.out.println("Введите выражение:  " +
+                "\n(или history - показать последние 10 операций " +
+                "\nlast - показать последнюю операцию " +
+                "\nclear - очистить историю операций " +
+                "\nexit - выход из программы) ");
+        return scanner.nextLine();
     }
 
     public String[] split(String input) {
@@ -25,6 +29,7 @@ public class InputParser {
         }
         String[] numbers = input.split("\\" + operator);
 
+        // новый метод на длину массива
         if (numbers.length != 2) {
             throw new IllegalArgumentException("неверный формат");
         }

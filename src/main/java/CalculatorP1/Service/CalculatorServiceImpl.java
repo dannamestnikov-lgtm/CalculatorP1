@@ -18,7 +18,7 @@ public class CalculatorServiceImpl implements CalculatorService {
         while (true) {
             try {
                 String input = parser.readInput();
-                input = input.toLowerCase().trim();
+                input = input.trim().toLowerCase();
 
                 if (input.equals("exit")) {
                     System.out.println("Калькулятор закрыт");
