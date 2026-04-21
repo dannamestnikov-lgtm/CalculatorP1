@@ -19,25 +19,11 @@ public class CalculatorServiceImpl implements CalculatorService {
             try {
                 String input = parser.readInput();
                 input = input.trim().toLowerCase();
-
-                if (input.equals("exit")) {
-                    System.out.println("Калькулятор закрыт");
+                if (input.equals("exit")){
+                    System.out.println("калькулятор закрыт");
                     break;
                 }
-
-                if (input.equals("history")) {
-                    history.printHistory();
-                    continue;
-                }
-
-                if (input.equals("last")) {
-                    String last = history.getlast();
-                    System.out.println(last == null ? "История пуста" : last);
-                    continue;
-                }
-
-                if (input.equals("clear")) {
-                    history.clear();
+                if (validateCheck(input)){
                     continue;
                 }
 
@@ -58,6 +44,7 @@ public class CalculatorServiceImpl implements CalculatorService {
                 String operator = parts[1];
 
                 double result;
+//                метод подбора оператора
                 switch (operator) {
                     case "+":
                         result = calculator.plus(num1, num2);
@@ -75,6 +62,7 @@ public class CalculatorServiceImpl implements CalculatorService {
                         System.out.println("неизвестная операция");
                         continue;
                 }
+//                метод "если слово"
                 if (isWord) {
                     if (result == (int) result) {
                         String resultWorld = wordUtil.numberToWord((int) result);
@@ -94,5 +82,25 @@ public class CalculatorServiceImpl implements CalculatorService {
                 System.out.println("ошибка: деление на ноль");
             }
         }
+    }
+
+    public boolean validateCheck(String input){
+
+        if (input.equals("history")) {
+            history.printHistory();
+            return true;
+        }
+
+        if (input.equals("last")) {
+            String last = history.getlast();
+            System.out.println(last == null ? "История пуста" : last);
+            return true;
+        }
+
+        if (input.equals("clear")) {
+            history.clear();
+            return true;
+        }
+        return false;
     }
 }

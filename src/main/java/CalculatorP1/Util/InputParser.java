@@ -17,7 +17,7 @@ public class InputParser {
     }
 
     public String[] split(String input) {
-        String operator = findOperators(input);
+        String operator = findOperator(input);
         String[] numbers = input.split(Pattern.quote(operator));
         validateParts(numbers);
 
