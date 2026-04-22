@@ -46,7 +46,6 @@ public class WordUtil {
     public int wordToNumber(String input) {
         String [] words = input.trim().split(" ");
         int result = 0;
-
         for (String word : words) {
             Integer value = wordToNumber.get(word);
             if (value == null){
