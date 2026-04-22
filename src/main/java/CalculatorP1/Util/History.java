@@ -8,11 +8,9 @@ public class History {
 
     public void add(String operation){
         history.add(operation);
-
         if (history.size() > 10){
             history.remove(0);
         }
-
     }
 
     public void printHistory(){

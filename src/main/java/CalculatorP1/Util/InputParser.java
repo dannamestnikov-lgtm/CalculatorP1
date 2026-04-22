@@ -5,14 +5,12 @@ import java.util.regex.Pattern;
 
 public class InputParser {
     private final Scanner scanner = new Scanner(System.in);
-
     public String readInput() {
         System.out.println("Введите выражение:  " +
                 "\n(или history - показать последние 10 операций " +
                 "\nlast - показать последнюю операцию " +
                 "\nclear - очистить историю операций " +
                 "\nexit - выход из программы) ");
-
         return scanner.nextLine();
     }
 
@@ -20,10 +18,8 @@ public class InputParser {
         String operator = findOperator(input);
         String[] numbers = input.split(Pattern.quote(operator));
         validateParts(numbers);
-
         String leftPart = numbers[0].trim();
         String rightPart = numbers[1].trim();
-
         if (leftPart.isEmpty() || rightPart.isEmpty()) {
             throw new IllegalArgumentException("неверный формат");
         }

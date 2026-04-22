@@ -61,10 +61,8 @@ public class WordUtil {
         }
         int tens = splitTens(number);
         int ones = number % 10;
-
         String tensWord = numberToWord.get(tens);
         String onesWord = numberToWord.get(ones);
-
         if (ones == 0) {
             return tensWord;
         }
